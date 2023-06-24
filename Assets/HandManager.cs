@@ -14,7 +14,7 @@ public class HandManager : MonoBehaviour
 
     GameObject player;
     bool readyToAttack = false;
-    bool moving = true;
+    bool chasingPlayer = true;
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +24,19 @@ public class HandManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(moving)
+        if(chasingPlayer)
             navMeshAgent.SetDestination(player.transform.position);
+    }
+
+    public void DashTowardsPlayer()
+    {
+        chasingPlayer= false;
+        navMeshAgent.SetDestination(player.transform.position);
+    }
+    public void StopDashTowardsPlayer()
+    {
+        //chasingPlayer = true;
+        //navMeshAgent.SetDestination(player.transform.position);
     }
 
     public void SetPlayer(GameObject p)
@@ -40,12 +51,12 @@ public class HandManager : MonoBehaviour
 
     public void StopMoving()
     {
-        moving= false;
+        chasingPlayer = false;
         navMeshAgent.isStopped = true;
     }
     public void StartMoving()
     {
-        moving = true;
+        chasingPlayer = true;
         navMeshAgent.isStopped = false;
     }
 
@@ -94,4 +105,9 @@ public class HandManager : MonoBehaviour
             crabHealth.TakeDamage(damage);
         }
     }
+
+    public void StartPhase2()
+    {
+        handAnimator.SetTrigger("StartPhase2");
+    }    
 }

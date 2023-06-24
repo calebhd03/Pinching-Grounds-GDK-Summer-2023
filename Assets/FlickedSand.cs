@@ -13,8 +13,8 @@ public class FlickedSand : MonoBehaviour
     {
         while(moving)
         {
-            yield return null;
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            yield return null;
         }
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class HandAttackManager : MonoBehaviour
 {
@@ -15,11 +16,12 @@ public class HandAttackManager : MonoBehaviour
 
     int numberOfAttacks = 2;
     bool canAttack = false;
+    float navMeshSpeed;
 
 
     private void Start()
     {
-        //StartCoroutine(wait(timeBetweenAttacks));
+        navMeshSpeed = GetComponent<NavMeshAgent>().speed;
     }
     IEnumerator wait(float delay)
     {
@@ -58,8 +60,20 @@ public class HandAttackManager : MonoBehaviour
         StartCoroutine(flickedSand.GetComponent<FlickedSand>().MoveForward());
     }
 
-    void HandDrag()
+    public void LookAtPlayer()
     {
+        this.transform.LookAt(handManager.GetPlayerPosition());
+    }
 
+    public void HandDrag()
+    {
+        handManager.DashTowardsPlayer();
+        GetComponent<NavMeshAgent>().speed = 6;
+    }
+
+    public void StopHandDrag()
+    {
+        handManager.StopDashTowardsPlayer();
+        GetComponent<NavMeshAgent>().speed = navMeshSpeed;
     }
 }
