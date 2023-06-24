@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class CrabCover : MonoBehaviour
 {
     [SerializeField] GameObject modelToHide;
+    [SerializeField] PlayerMovement playerMovement;
 
     float timeSinceBlocking = 0;
     bool blocking = false;
@@ -21,6 +22,8 @@ public class CrabCover : MonoBehaviour
         if (blocking)
         {
             modelToHide.SetActive(false);
+            playerMovement.SetCanMove(false);
+
             timeSinceBlocking = Time.time;
 
             Debug.Log("Blocking");
@@ -28,6 +31,8 @@ public class CrabCover : MonoBehaviour
         else if(!blocking)
         {
             modelToHide.SetActive(true);
+            playerMovement.SetCanMove(true);
+
             timeSinceBlocking = 0;
 
             Debug.Log("unBlocking");

@@ -6,13 +6,15 @@ using UnityEngine.AI;
 public class HandManager : MonoBehaviour
 {
     
-    [SerializeField] Animator handAnimator;
     [SerializeField] float parryTime;
     [SerializeField] int damage;
+    [SerializeField] Animator handAnimator;
     [SerializeField] NavMeshAgent navMeshAgent;
+    [SerializeField] HandAttack handAttack;
 
     GameObject player;
     bool readyToAttack = false;
+    bool moving = true;
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +24,29 @@ public class HandManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        navMeshAgent.SetDestination(player.transform.position);
+        if(moving)
+            navMeshAgent.SetDestination(player.transform.position);
     }
 
     public void SetPlayer(GameObject p)
     {
         player= p;
+    }
+
+    public Vector3 GetPlayerPosition()
+    {
+        return player.transform.position;
+    }
+
+    public void StopMoving()
+    {
+        moving= false;
+        navMeshAgent.isStopped = true;
+    }
+    public void StartMoving()
+    {
+        moving = true;
+        navMeshAgent.isStopped = false;
     }
 
     public void HandWaitingHeight()

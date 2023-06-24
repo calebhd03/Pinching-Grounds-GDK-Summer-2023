@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveVelocity;
     Vector3 movement;
     Vector3 look;
+    bool canMove = true;
 
     // Start is called before the first frame update
     void Start()
@@ -23,11 +24,19 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    public void SetCanMove(bool canMove)
+    {
+        this.canMove = canMove;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.Translate(movement * movementSpeed);
-        transform.Rotate(look * playerSettings.GetLookSpeed());
+        if (canMove)
+        {
+            transform.Translate(movement * movementSpeed);
+            transform.Rotate(look * playerSettings.GetLookSpeed());
+        }
     }
 
     private void OnMove(InputValue input)
