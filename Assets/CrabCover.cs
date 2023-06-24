@@ -39,7 +39,7 @@ public class CrabCover : MonoBehaviour
         return blocking;
     }
 
-    public float timeBlocking()
+    public float GetTimeBlocking()
     {
         return Time.time - timeSinceBlocking;
     }
