@@ -26,8 +26,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //LookAtMouse();
-        //rb.velocity = moveVelocity;
         transform.Translate(movement * movementSpeed);
         transform.Rotate(look * lookSpeed);
     }
@@ -44,7 +42,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 lookInput = input.Get<Vector2>();
         look = new Vector3(0, lookInput.x, 0);
-
     }
 
     ///Points gun at mouse world position
