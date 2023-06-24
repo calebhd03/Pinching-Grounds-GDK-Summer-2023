@@ -10,7 +10,8 @@ public class Claw : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
-            //Enemy Takes Damage
+            //other.GetComponentInParent<FeetBoss>().currentHealth-=1;
+            other.GetComponentInParent<FeetBoss>().Damage();
         }
     }
 }
