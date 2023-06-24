@@ -8,8 +8,8 @@ using UnityEngine.InputSystem.Users;
 public class PlayerMovement : MonoBehaviour
 {
     //[SerializeField] Rigidbody rigidbody;
+    [SerializeField] PlayerSettings playerSettings;
     [SerializeField] float movementSpeed;
-    [SerializeField] float lookSpeed;
 
     Rigidbody rb;
     Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         transform.Translate(movement * movementSpeed);
-        transform.Rotate(look * lookSpeed);
+        transform.Rotate(look * playerSettings.GetLookSpeed());
     }
 
     private void OnMove(InputValue input)

@@ -362,6 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef5be074dca5d741bb8db4935b9db17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSettings: {fileID: 11400000, guid: 2e27f49d728dce14480800a968edc55e, type: 2}
   movementSpeed: 0.07
   lookSpeed: 2
 --- !u!114 &3594408126956710457
