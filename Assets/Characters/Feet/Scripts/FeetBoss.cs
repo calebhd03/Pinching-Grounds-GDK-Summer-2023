@@ -147,6 +147,10 @@ public class FeetBoss : MonoBehaviour
         currentHealth -= 1;
         //anim.SetInteger("Health", currentHealth);
         healthSlider.value = currentHealth;
+        if (currentHealth == 0)
+        {
+            BossDied();
+        }
     }
 
     public void DamageLeft()
