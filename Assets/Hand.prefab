@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 360458178248806201}
   - component: {fileID: 8510430647251077073}
   - component: {fileID: 4458583630189866219}
+  - component: {fileID: 5024053215372546337}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Enemy
@@ -128,9 +129,42 @@ MonoBehaviour:
   flickedSandSpeed: 2
   dashSpeed: 10
   handManager: {fileID: 8510430647251077073}
+  multipleVoiceline: {fileID: 5024053215372546337}
   handAnimator: {fileID: 360458178248806201}
   flickPrefab: {fileID: 5807376921041951006, guid: cca51433e85401f468398ad2134d0a43, type: 3}
   flickPoint: {fileID: 15157182939068854}
+--- !u!114 &5024053215372546337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5340831706898765559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25903065a6b55c846a1b0d0d19c5ab62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceOfHappening: 0.128
+  sounds:
+  - name: 
+    clip: {fileID: 8300000, guid: fcf91c2edd5eaec4cb08aacdfe810c67, type: 3}
+    volume: 0.181
+    pitch: 1.38
+    spatialBlend: 0
+    loop: 0
+  - name: 
+    clip: {fileID: 8300000, guid: 3919a9d97f099e340bb3dcad0e628909, type: 3}
+    volume: 0.181
+    pitch: 1.38
+    spatialBlend: 0
+    loop: 0
+  - name: 
+    clip: {fileID: 8300000, guid: d5fd5e2f1d696854485b8c115a8dc875, type: 3}
+    volume: 0.181
+    pitch: 1.38
+    spatialBlend: 0
+    loop: 0
 --- !u!1 &8365096982432173232
 GameObject:
   m_ObjectHideFlags: 0

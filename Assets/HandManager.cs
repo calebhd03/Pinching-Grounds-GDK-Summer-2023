@@ -37,8 +37,11 @@ public class HandManager : MonoBehaviour
     {
         chasingPlayer= false;
 
-        Ray targetLine = new Ray(transform.position, transform.position - player.transform.position);
+        Ray targetLine = new Ray(transform.position,  player.transform.position - transform.position);
         Vector3 target;
+
+        
+        Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.blue, 1f);
 
         RaycastHit hit; LayerMask layerMask = 3;
         if(Physics.Raycast(targetLine, out hit, layerMask))
@@ -49,6 +52,7 @@ public class HandManager : MonoBehaviour
         {
             target = targetLine.GetPoint(dashDistance);
         }
+
 
         navMeshAgent.SetDestination(target);
     }

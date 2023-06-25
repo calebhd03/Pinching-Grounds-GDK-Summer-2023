@@ -11,6 +11,7 @@ public class HandAttackManager : MonoBehaviour
     [SerializeField] float dashSpeed;
 
     [SerializeField] HandManager handManager;
+    [SerializeField] MultipleVoiceline multipleVoiceline;
     [SerializeField] Animator handAnimator;
     [SerializeField] GameObject flickPrefab;
     [SerializeField] Transform flickPoint;
@@ -33,20 +34,22 @@ public class HandAttackManager : MonoBehaviour
     public void ReadyToAttack()
     {
         canAttack = true;
-        int attack = Random.Range(1, numberOfAttacks + 1);
 
+        multipleVoiceline.Play();
+
+        int attack = Random.Range(1, numberOfAttacks + 1);
         switch (attack)
         {
             case 1:
                 handAnimator.SetTrigger("Flick");
                 break;
+
             case 2:
                 if(handManager.GetPhase() == 1)
                     handAnimator.SetTrigger("HandHandDrag");
                 else
                     handAnimator.SetTrigger("HandHandDrag2");
-
-                break;
+             break;
         }
 
     }
