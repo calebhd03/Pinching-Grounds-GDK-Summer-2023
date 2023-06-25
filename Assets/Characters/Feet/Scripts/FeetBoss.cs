@@ -75,8 +75,8 @@ public class FeetBoss : MonoBehaviour
 
 
         //Freeze Rotations
-        transform.LookAt(player.transform.position);
-        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        //transform.LookAt(player.transform.position);
+        //transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
 
         //Random Movement
         if (agent.remainingDistance <= agent.stoppingDistance)
