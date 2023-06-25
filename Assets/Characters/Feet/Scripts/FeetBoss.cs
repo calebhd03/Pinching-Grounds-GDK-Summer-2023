@@ -13,6 +13,7 @@ public class FeetBoss : MonoBehaviour
     [SerializeField] Slider healthSlider;
     [SerializeField] Slider LefthealthSlider;
     [SerializeField] Slider RighthealthSlider;
+    [SerializeField] EnemyManager enemyManager;
 
     //GameObject player;
     [Header("Movement")]
@@ -27,6 +28,11 @@ public class FeetBoss : MonoBehaviour
     public int RightHealth = 10;
     public int RightcurrentHealth;
 
+    public GameObject LeftDeath;
+    public GameObject RightDeath;
+    public GameObject LeftNew;
+    public GameObject RightNew;
+
     [Header("Feet and Attack")]
     public GameObject Left;
     public GameObject Right;
@@ -37,7 +43,6 @@ public class FeetBoss : MonoBehaviour
     GameObject player;
     GameObject leftHand;
     GameObject rightHand;
-    EnemyManager enemyManager;
     List<GameObject> hands = new List<GameObject>();
 
     private void Start()
@@ -57,6 +62,9 @@ public class FeetBoss : MonoBehaviour
         RightcurrentHealth = RightHealth;
         RighthealthSlider.maxValue = RightHealth;
         RighthealthSlider.value = RightcurrentHealth;
+
+        healthSlider.gameObject.SetActive(false);
+
         //anim.SetInteger("Health", currentHealth);
 
         //player = GameObject.FindWithTag("Player");
@@ -65,7 +73,6 @@ public class FeetBoss : MonoBehaviour
     void Update()
     {
 
-        healthSlider.gameObject.SetActive(false);
 
         //Freeze Rotations
         transform.localEulerAngles = new Vector3(0, 0, transform.localEulerAngles.z);
@@ -80,9 +87,23 @@ public class FeetBoss : MonoBehaviour
             }
         }
 
+        
+        
+
+        if(LeftcurrentHealth == 0 && RightcurrentHealth == 0)
+        {
+            healthSlider.gameObject.SetActive(true);
+            Left.tag = "Enemy";
+            Right.tag = "Enemy";
+        }
+    }
+
+    public void Legs()
+    {
         //Attacks
-        int randomNumber = Random.Range(0, 2);
-        if (randomNumber == 1)
+        int randomNumber = Random.Range(0, 5);
+        Debug.Log(randomNumber);
+        if (randomNumber > 2)
         {
             anim.SetTrigger("Walk/RightStomp");
             //Instantiate(Blast, firePointRight.position, firePointRight.rotation);
@@ -91,13 +112,6 @@ public class FeetBoss : MonoBehaviour
         {
             anim.SetTrigger("Walk/LeftStomp");
             //Instantiate(Blast, firePointLeft.position, firePointLeft.rotation);
-        }
-
-        if(LeftcurrentHealth == 0 && RightcurrentHealth == 0)
-        {
-            healthSlider.gameObject.SetActive(true);
-            Left.tag = "Enemy";
-            Right.tag = "Enemy";
         }
     }
     
@@ -117,6 +131,16 @@ public class FeetBoss : MonoBehaviour
         return false;
     }
 
+    public void AttackLeft()
+    {
+        Instantiate(Blast, firePointLeft.position, firePointLeft.rotation);
+    }
+
+    public void AttackRight()
+    {
+        Instantiate(Blast, firePointRight.position, firePointRight.rotation);
+    }
+
     public void Damage()
     {
         currentHealth -= 1;
@@ -133,6 +157,8 @@ public class FeetBoss : MonoBehaviour
         if(LeftcurrentHealth == 0)
         {
             LefthealthSlider.gameObject.SetActive(false);
+            LeftDeath.gameObject.SetActive(false);
+            LeftNew.gameObject.SetActive(true);
         }
 
         CheckLeftPhase2();
@@ -147,6 +173,8 @@ public class FeetBoss : MonoBehaviour
         if (RightcurrentHealth == 0)
         {
             RighthealthSlider.gameObject.SetActive(false);
+            RightDeath.gameObject.SetActive(false);
+            RightNew.gameObject.SetActive(true);
         }
 
         CheckRightPhase2();

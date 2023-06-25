@@ -9,8 +9,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] GameObject handPrefab;
     [SerializeField] GameObject feetPrefab;
 
-    GameObject rightHand;
-    GameObject leftHand;
+    [SerializeField] GameObject rightHand;
+    [SerializeField] GameObject leftHand;
     GameObject boss;
 
     List<GameObject> hands = new List<GameObject>();
