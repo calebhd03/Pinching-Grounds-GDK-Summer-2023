@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove)
         {
-            transform.position -= movement * movementSpeed;
+            transform.position += movement * movementSpeed;
             //transform.Translate(movement * movementSpeed);
             transform.Rotate(look * playerSettings.GetLookSpeed());
         }

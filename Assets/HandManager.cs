@@ -7,6 +7,7 @@ public class HandManager : MonoBehaviour
 {
     
     [SerializeField] float parryTime;
+    [SerializeField] float dashDistance;
     [SerializeField] int damage;
     [SerializeField] Animator handAnimator;
     [SerializeField] NavMeshAgent navMeshAgent;
@@ -35,7 +36,21 @@ public class HandManager : MonoBehaviour
     public void DashTowardsPlayer()
     {
         chasingPlayer= false;
-        navMeshAgent.SetDestination(player.transform.position);
+
+        Ray targetLine = new Ray(transform.position, transform.position - player.transform.position);
+        Vector3 target;
+
+        RaycastHit hit; LayerMask layerMask = 3;
+        if(Physics.Raycast(targetLine, out hit, layerMask))
+        {
+            target = hit.point;
+        }
+        else
+        {
+            target = targetLine.GetPoint(dashDistance);
+        }
+
+        navMeshAgent.SetDestination(target);
     }
     public void StopDashTowardsPlayer()
     {
