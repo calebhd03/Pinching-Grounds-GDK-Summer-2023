@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CrabHealth : MonoBehaviour
 {
     [SerializeField] GameObject model;
     [SerializeField] CrabCover crabCover;
+    [SerializeField] Slider healthSlider;
+    [SerializeField] GameManager gameManager;
     [SerializeField] int maxHealth;
     [SerializeField] int currentHealth;
     [SerializeField] float invincibleTime;
@@ -25,6 +28,15 @@ public class CrabHealth : MonoBehaviour
         {
             Debug.Log("Tool Damage");
             currentHealth -= damage;
+            healthSlider.value = currentHealth;
+
+            if(currentHealth <= 0)
+            {
+                               
+                gameManager.PlayerDied();
+                crabCover.PlayerDied();
+            }
+
             StartCoroutine(BecomeTemporarilyInvincible(invincibleTime));
             return true;
         }
@@ -35,6 +47,7 @@ public class CrabHealth : MonoBehaviour
     public void SetToMaxHealth()
     {
         currentHealth = maxHealth;
+        healthSlider.value = currentHealth;
     }
 
     private IEnumerator BecomeTemporarilyInvincible(float timeInvincible)

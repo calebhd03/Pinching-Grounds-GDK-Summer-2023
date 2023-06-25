@@ -21,22 +21,37 @@ public class CrabCover : MonoBehaviour
 
         if (blocking)
         {
-            modelToHide.SetActive(false);
-            playerMovement.SetCanMove(false);
-
-            timeSinceBlocking = Time.time;
-
-            Debug.Log("Blocking");
+            Block();
         }
         else if(!blocking)
         {
-            modelToHide.SetActive(true);
-            playerMovement.SetCanMove(true);
-
-            timeSinceBlocking = 0;
-
-            Debug.Log("unBlocking");
+            UnBlock();
         }
+    }
+
+    private void Block()
+    {
+        modelToHide.SetActive(false);
+        playerMovement.SetCanMove(false);
+
+        timeSinceBlocking = Time.time;
+
+        Debug.Log("Blocking");
+    }
+
+    private void UnBlock()
+    {
+        modelToHide.SetActive(true);
+        playerMovement.SetCanMove(true);
+
+        timeSinceBlocking = 0;
+
+        Debug.Log("unBlocking");
+    }
+
+    public void PlayerDied()
+    {
+        Block();
     }
 
     public bool GetBlocking()
