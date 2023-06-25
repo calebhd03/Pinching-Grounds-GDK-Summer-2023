@@ -20,7 +20,6 @@ public class HandAttackManager : MonoBehaviour
 
     float navMeshSpeed;
 
-
     private void Start()
     {
         navMeshSpeed = GetComponent<NavMeshAgent>().speed;

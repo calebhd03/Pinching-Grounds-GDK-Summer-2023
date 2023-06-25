@@ -11,14 +11,11 @@ public class HandAttack : MonoBehaviour
     [SerializeField] Animator handAnimator;
     [SerializeField] GameObject flickPrefab;
 
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            GetComponentInParent<HandManager>().PlayerHit(other.gameObject);
+            other.GetComponent<CrabHealth>().TakeDamage(1);
         }
     }
-
-
 }
