@@ -15,6 +15,7 @@ public class FeetBoss : MonoBehaviour
     [SerializeField] Slider RighthealthSlider;
     [SerializeField] EnemyManager enemyManager;
     [SerializeField] GameObject player;
+    [SerializeField] NavMeshAgent navMeshAgent;
 
     //GameObject player;
     [Header("Movement")]
@@ -73,11 +74,6 @@ public class FeetBoss : MonoBehaviour
     void Update()
     {
 
-
-        //Freeze Rotations
-        //transform.LookAt(player.transform.position);
-        //transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-
         //Random Movement
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
@@ -115,7 +111,15 @@ public class FeetBoss : MonoBehaviour
             //Instantiate(Blast, firePointLeft.position, firePointLeft.rotation);
         }
     }
-    
+    public void StopMoving()
+    {
+        navMeshAgent.isStopped = true;
+    }
+    public void StartMoving()
+    {
+        navMeshAgent.isStopped = false;
+    }
+
     //Random Movement
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
@@ -134,11 +138,13 @@ public class FeetBoss : MonoBehaviour
 
     public void AttackLeft()
     {
+        Debug.Log("Feet attack");
         Instantiate(Blast, firePointLeft.position, firePointLeft.rotation);
     }
 
     public void AttackRight()
     {
+        Debug.Log("Feet attack");
         Instantiate(Blast, firePointRight.position, firePointRight.rotation);
     }
 
@@ -185,7 +191,12 @@ public class FeetBoss : MonoBehaviour
         CheckRightPhase2();
     }
 
-
+    public void StareAtPlayer()
+    {
+        //Freeze Rotations
+        transform.LookAt(player.transform.position);
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+    }
     public void SetPlayer(GameObject p)
     {
         this.player = p;

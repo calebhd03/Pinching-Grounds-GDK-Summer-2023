@@ -5252,15 +5252,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5770471939269578043, guid: 485e09af952289f4dbf475d5fc11d00a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.4761
+      value: 1.5787613
       objectReference: {fileID: 0}
     - target: {fileID: 5770471939269578043, guid: 485e09af952289f4dbf475d5fc11d00a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.4761
+      value: 1.5787613
       objectReference: {fileID: 0}
     - target: {fileID: 5770471939269578043, guid: 485e09af952289f4dbf475d5fc11d00a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.4761
+      value: 1.5787613
       objectReference: {fileID: 0}
     - target: {fileID: 5770471939269578043, guid: 485e09af952289f4dbf475d5fc11d00a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6090,6 +6090,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1826725195, guid: faf5dbe03f4dd9842b7a1e0fd46c4be7, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2514596464032682438, guid: faf5dbe03f4dd9842b7a1e0fd46c4be7, type: 3}
       propertyPath: m_Name
       value: Player
