@@ -5,6 +5,7 @@ using UnityEngine;
 public class CrabHealth : MonoBehaviour
 {
     [SerializeField] GameObject model;
+    [SerializeField] CrabCover crabCover;
     [SerializeField] int maxHealth;
     [SerializeField] int currentHealth;
     [SerializeField] float invincibleTime;
@@ -20,7 +21,7 @@ public class CrabHealth : MonoBehaviour
     public bool TakeDamage(int damage)
     {
         Debug.Log("checking take damage: is Invincible = " + isInvincible);
-        if(!isInvincible)
+        if(!isInvincible && !crabCover.GetBlocking())
         {
             Debug.Log("Tool Damage");
             currentHealth -= damage;

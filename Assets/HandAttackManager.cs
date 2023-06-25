@@ -41,7 +41,11 @@ public class HandAttackManager : MonoBehaviour
                 handAnimator.SetTrigger("Flick");
                 break;
             case 2:
-                handAnimator.SetTrigger("HandHandDrag");
+                if(handManager.GetPhase() == 1)
+                    handAnimator.SetTrigger("HandHandDrag");
+                else
+                    handAnimator.SetTrigger("HandHandDrag2");
+
                 break;
         }
 
@@ -50,7 +54,8 @@ public class HandAttackManager : MonoBehaviour
     public void Flick()
     {
         GameObject flickedSand = Instantiate(flickPrefab, flickPoint.position, Quaternion.identity);
-        flickedSand.transform.LookAt(handManager.GetPlayerPosition());
+        Vector3 target = new Vector3(handManager.GetPlayerPosition().x, flickPoint.position.y, handManager.GetPlayerPosition().z);
+        flickedSand.transform.LookAt(target);
 
         FlickedSand sandScript = flickedSand.GetComponent<FlickedSand>();
         sandScript.SetPhase(handManager.GetPhase());
@@ -64,6 +69,7 @@ public class HandAttackManager : MonoBehaviour
 
     public void HandDrag()
     {
+        LookAtPlayer();
         handManager.DashTowardsPlayer();
         GetComponent<NavMeshAgent>().speed = dashSpeed;
     }

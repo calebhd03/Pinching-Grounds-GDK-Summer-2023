@@ -253,7 +253,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 3358572493649511730}
+  crabCover: {fileID: 3594408126956710457}
   maxHealth: 3
+  currentHealth: 0
   invincibleTime: 2
   invincibilityDeltaTime: 0.3
 --- !u!95 &1449327871663240607

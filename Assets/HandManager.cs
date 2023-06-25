@@ -15,7 +15,7 @@ public class HandManager : MonoBehaviour
 
     bool readyToAttack = false;
     bool chasingPlayer = true;
-    int phase = 1;
+    int phase = 2;
 
     // Start is called before the first frame update
     void Start()
