@@ -99,14 +99,6 @@ public class FeetBoss : MonoBehaviour
             Left.tag = "Enemy";
             Right.tag = "Enemy";
         }
-        if(LeftcurrentHealth == 0)
-        {
-            LefthealthSlider.gameObject.SetActive(false);
-        }
-        if (RightcurrentHealth == 0)
-        {
-            RighthealthSlider.gameObject.SetActive(false);
-        }
     }
     
     //Random Movement
@@ -137,6 +129,13 @@ public class FeetBoss : MonoBehaviour
         LeftcurrentHealth -= 1;
         //anim.SetInteger("Health", currentHealth);
         LefthealthSlider.value = LeftcurrentHealth;
+
+        if(LeftcurrentHealth == 0)
+        {
+            LefthealthSlider.gameObject.SetActive(false);
+        }
+
+        CheckLeftPhase2();
     }
 
     public void DamageRight()
@@ -144,6 +143,13 @@ public class FeetBoss : MonoBehaviour
         RightcurrentHealth -= 1;
         //anim.SetInteger("Health", currentHealth);
         RighthealthSlider.value = RightcurrentHealth;
+
+        if (RightcurrentHealth == 0)
+        {
+            RighthealthSlider.gameObject.SetActive(false);
+        }
+
+        CheckRightPhase2();
     }
 
 
@@ -165,12 +171,18 @@ public class FeetBoss : MonoBehaviour
         this.enemyManager= e;
     }
 
-    /*
-    public void Phase2()
+    public void CheckRightPhase2()
     {
-        if (anim.GetInteger("Health") <= 10)
+        if (RightcurrentHealth <= 0)
         {
-            enemyManager.StartPhase2();    
+            enemyManager.RightHandStartPhase2();    
         }
-    }*/
+    }
+    public void CheckLeftPhase2()
+    {
+        if (LeftcurrentHealth <= 0)
+        {
+            enemyManager.LeftHandStartPhase2();
+        }
+    }
 }
