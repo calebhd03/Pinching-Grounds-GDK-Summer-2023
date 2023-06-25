@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  speed: 7
+  speed: 15
   timeBetweenBreak: 0.5
   sandPrefab: {fileID: 5807376921041951006}
 --- !u!1001 &4668513324490642137

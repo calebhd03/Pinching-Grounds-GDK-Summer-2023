@@ -125,7 +125,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSettings: {fileID: 11400000, guid: 2e27f49d728dce14480800a968edc55e, type: 2}
-  movementSpeed: 10
+  movementSpeed: 12
   rb: {fileID: 1826725195}
 --- !u!114 &3594408126956710457
 MonoBehaviour:
