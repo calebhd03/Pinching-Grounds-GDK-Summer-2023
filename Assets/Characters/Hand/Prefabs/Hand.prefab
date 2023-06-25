@@ -109,7 +109,7 @@ MonoBehaviour:
   parryTime: 0.3
   dashDistance: 30
   damage: 1
-  isLeftHand: 0
+  isLeftHand: 1
   handAnimator: {fileID: 360458178248806201}
   navMeshAgent: {fileID: 7315719942166021809}
   handAttack: {fileID: 4339264044646503296}

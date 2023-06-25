@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 5103507210544503176}
   - component: {fileID: 4552608520142008086}
   - component: {fileID: 5343539374546449353}
-  m_Layer: 0
+  - component: {fileID: 7933385143647614112}
+  m_Layer: 3
   m_Name: Rocks
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5103507210544503176
 Transform:
@@ -84,3 +85,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7933385143647614112
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9125472242231416674}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0043133413, y: 0.0026482276, z: 0.0027246391}
+  m_Center: {x: 0.0008381035, y: -0.0000011189218, z: 0.0013266499}
