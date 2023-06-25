@@ -139,4 +139,9 @@ public class HandManager : MonoBehaviour
     {
         return phase;
     }
+
+    public void BossDied()
+    {
+
+    }
 }

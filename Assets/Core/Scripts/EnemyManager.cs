@@ -8,8 +8,12 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject handPrefab;
     [SerializeField] GameObject feetPrefab;
-    List<GameObject> hands = new List<GameObject>();
+
+    GameObject rightHand;
+    GameObject leftHand;
     GameObject boss;
+
+    List<GameObject> hands = new List<GameObject>();
 
     public GameObject SpawnHand(Vector3 spawnPoint)
     {
@@ -45,6 +49,22 @@ public class EnemyManager : MonoBehaviour
         foreach(GameObject hand in hands)
         {
             hand.GetComponent<HandManager>().StartPhase2();
+        }
+    }
+
+    public void RightHandStartPhase2()
+    {
+        rightHand.GetComponent<HandManager>().StartPhase2();
+    }
+    public void LeftHandStartPhase2()
+    {
+        leftHand.GetComponent<HandManager>().StartPhase2();
+    }
+    public void BossDied()
+    {
+        foreach(GameObject hand in hands)
+        {
+            hand.GetComponent<HandManager>().BossDied();
         }
     }
 
