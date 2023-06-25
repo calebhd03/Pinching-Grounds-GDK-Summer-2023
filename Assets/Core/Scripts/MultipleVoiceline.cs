@@ -28,8 +28,6 @@ public class MultipleVoiceline : MonoBehaviour
     void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
-
-        
     }
 
     public void Play()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.XR;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,7 +12,7 @@ public class HandAttackManager : MonoBehaviour
     [SerializeField] float dashSpeed;
 
     [SerializeField] HandManager handManager;
-    [SerializeField] MultipleVoiceline multipleVoiceline;
+    [SerializeField] MultipleVoiceline handAttackVoiceLines;
     [SerializeField] Animator handAnimator;
     [SerializeField] GameObject flickPrefab;
     [SerializeField] Transform flickPoint;
@@ -36,7 +37,7 @@ public class HandAttackManager : MonoBehaviour
     {
         canAttack = true;
 
-        multipleVoiceline.Play();
+        handAttackVoiceLines.Play();
 
         int attack = Random.Range(1, numberOfAttacks + 1);
         switch (attack)
