@@ -34,7 +34,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove)
         {
-            transform.Translate(movement * movementSpeed);
+            transform.position -= movement * movementSpeed;
+            //transform.Translate(movement * movementSpeed);
             transform.Rotate(look * playerSettings.GetLookSpeed());
         }
     }
@@ -42,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnMove(InputValue input)
     {
         Vector2 movementInput = input.Get<Vector2>();
-        movement = new Vector3( movementInput.x, 0, movementInput.y);
+        movement = new Vector3(movementInput.x, 0, movementInput.y);
         moveVelocity = movement * movementSpeed;
     }
     

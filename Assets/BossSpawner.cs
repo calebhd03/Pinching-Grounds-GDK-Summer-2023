@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandSpawner : MonoBehaviour
+public class BossSpawner : MonoBehaviour
 {
     [SerializeField] Vector3 spawnPoint;
     EnemyManager enemyManager;
@@ -11,7 +11,7 @@ public class HandSpawner : MonoBehaviour
 
     private void Start()
     {
-        enemyManager = GetComponentInParent<EnemyManager>();    
+        enemyManager = GetComponentInParent<EnemyManager>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,7 +23,7 @@ public class HandSpawner : MonoBehaviour
 
         alreadySpawned = true;
 
-        enemyManager.SpawnHand(spawnPoint);
+        enemyManager.SpawnBoss(spawnPoint);
     }
 
     private void OnDrawGizmos()

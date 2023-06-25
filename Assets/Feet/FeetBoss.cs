@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 
 public class FeetBoss : MonoBehaviour
@@ -9,6 +10,8 @@ public class FeetBoss : MonoBehaviour
     NavMeshAgent agent;
     Rigidbody rb;
     private Animator anim;
+    [SerializeField] Slider healthSlider;
+
     //GameObject player;
     [Header("Movement")]
     public float range;
@@ -21,14 +24,21 @@ public class FeetBoss : MonoBehaviour
     [Header("Attack")]
     public GameObject Blast;
 
+    GameObject player;
+    GameObject leftHand;
+    GameObject rightHand;
+    EnemyManager enemyManager;
+    List<GameObject> hands = new List<GameObject>();
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
-        anim = gameObject.GetComponent<Animator>();
+        anim = GetComponent<Animator>();
 
         currentHealth = maxHealth;
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = currentHealth;
         anim.SetInteger("Health", currentHealth);
 
         //player = GameObject.FindWithTag("Player");
@@ -72,6 +82,7 @@ public class FeetBoss : MonoBehaviour
     {
         currentHealth -= 1;
         anim.SetInteger("Health", currentHealth);
+        healthSlider.value = currentHealth;
     }
 
     //Attacks
@@ -79,6 +90,8 @@ public class FeetBoss : MonoBehaviour
     {
         if (anim.GetInteger("Health") <= 10)
         {
+            enemyManager.StartPhase2();
+
             int randomNumber = Random.Range(0, 2);
             if (randomNumber == 1)
             {
@@ -90,4 +103,22 @@ public class FeetBoss : MonoBehaviour
             }
         }
     }   
+
+    public void SetPlayer(GameObject p)
+    {
+        this.player = p;
+    }
+
+    public void SetLeftHand(GameObject l)
+    {
+        this.leftHand = l;
+    }
+    public void SetRightHand(GameObject r)
+    {
+        this.rightHand = r;
+    }
+    public void SetEnemyManager(EnemyManager e)
+    {
+        this.enemyManager= e;
+    }
 }

@@ -8,6 +8,7 @@ public class HandAttackManager : MonoBehaviour
 
     [SerializeField] float timeBetweenAttacks;
     [SerializeField] float flickedSandSpeed;
+    [SerializeField] float dashSpeed;
 
     [SerializeField] HandManager handManager;
     [SerializeField] Animator handAnimator;
@@ -41,15 +42,9 @@ public class HandAttackManager : MonoBehaviour
                 break;
             case 2:
                 handAnimator.SetTrigger("HandHandDrag");
-
                 break;
         }
 
-    }
-
-    float ClipLength()
-    {
-        return handAnimator.GetCurrentAnimatorStateInfo(1).length;
     }
 
     public void Flick()
@@ -57,7 +52,9 @@ public class HandAttackManager : MonoBehaviour
         GameObject flickedSand = Instantiate(flickPrefab, flickPoint.position, Quaternion.identity);
         flickedSand.transform.LookAt(handManager.GetPlayerPosition());
 
-        StartCoroutine(flickedSand.GetComponent<FlickedSand>().MoveForward());
+        FlickedSand sandScript = flickedSand.GetComponent<FlickedSand>();
+        sandScript.SetPhase(handManager.GetPhase());
+        StartCoroutine(sandScript.MoveForward());
     }
 
     public void LookAtPlayer()
@@ -68,7 +65,7 @@ public class HandAttackManager : MonoBehaviour
     public void HandDrag()
     {
         handManager.DashTowardsPlayer();
-        GetComponent<NavMeshAgent>().speed = 6;
+        GetComponent<NavMeshAgent>().speed = dashSpeed;
     }
 
     public void StopHandDrag()

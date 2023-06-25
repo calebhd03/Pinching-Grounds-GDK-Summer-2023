@@ -11,10 +11,11 @@ public class HandManager : MonoBehaviour
     [SerializeField] Animator handAnimator;
     [SerializeField] NavMeshAgent navMeshAgent;
     [SerializeField] HandAttack handAttack;
+    [SerializeField] GameObject player;
 
-    GameObject player;
     bool readyToAttack = false;
     bool chasingPlayer = true;
+    int phase = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,10 @@ public class HandManager : MonoBehaviour
     private void FixedUpdate()
     {
         if(chasingPlayer)
+        {
+            navMeshAgent.isStopped = false;
             navMeshAgent.SetDestination(player.transform.position);
+        }
     }
 
     public void DashTowardsPlayer()
@@ -35,8 +39,8 @@ public class HandManager : MonoBehaviour
     }
     public void StopDashTowardsPlayer()
     {
-        //chasingPlayer = true;
-        //navMeshAgent.SetDestination(player.transform.position);
+        chasingPlayer = true;
+        navMeshAgent.SetDestination(player.transform.position);
     }
 
     public void SetPlayer(GameObject p)
@@ -108,6 +112,12 @@ public class HandManager : MonoBehaviour
 
     public void StartPhase2()
     {
+        phase = 2;
         handAnimator.SetTrigger("StartPhase2");
     }    
+
+    public int GetPhase()
+    {
+        return phase;
+    }
 }
