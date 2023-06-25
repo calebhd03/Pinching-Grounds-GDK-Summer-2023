@@ -141,3 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a44b38e5ec5f4441876d876d53917f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introAudio: {fileID: 8300000, guid: 6757ee68ce73fd74ab0be1a2129bce0c, type: 3}
+  loopAudio: {fileID: 8300000, guid: 53c78edf30d146f40be4174add2fc7d5, type: 3}
+  audioSource: {fileID: 88097110495815166}

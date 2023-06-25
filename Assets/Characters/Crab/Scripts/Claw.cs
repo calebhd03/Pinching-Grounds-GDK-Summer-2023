@@ -11,7 +11,9 @@ public class Claw : MonoBehaviour
         if(other.CompareTag("Enemy"))
         {
             //other.GetComponentInParent<FeetBoss>().currentHealth-=1;
-            other.GetComponentInParent<FeetBoss>().Damage();
+            FeetBoss feet = other.GetComponentInParent<FeetBoss>();
+            if(feet != null)
+                feet.Damage();
         }
         if (other.CompareTag("Left"))
         {
