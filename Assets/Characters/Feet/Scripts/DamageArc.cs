@@ -30,4 +30,24 @@ public class DamageArc : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<CrabHealth>().TakeDamage(1);
+
+            Remove();
+        }
+        if (other.CompareTag("Wall"))
+        {
+            Remove();
+        }
+    }
+
+    public void Remove()
+    {
+        Destroy(gameObject);
+    }
 }
+

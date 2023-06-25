@@ -1606,6 +1606,7 @@ MonoBehaviour:
   healthSlider: {fileID: 5069726685269644265}
   LefthealthSlider: {fileID: 1713354757}
   RighthealthSlider: {fileID: 1279350366}
+  enemyManager: {fileID: 0}
   range: 30
   centrePoint: {fileID: 5770471939269578043}
   FinalHealth: 20
@@ -1614,6 +1615,10 @@ MonoBehaviour:
   LeftcurrentHealth: 0
   RightHealth: 10
   RightcurrentHealth: 0
+  LeftDeath: {fileID: 256641337113274593}
+  RightDeath: {fileID: 5328210452694885046}
+  LeftNew: {fileID: 5409999599889406612}
+  RightNew: {fileID: 8606473933779942208}
   Left: {fileID: 5770471939544071822}
   Right: {fileID: 5770471937971903934}
   Blast: {fileID: 4502571604618841341, guid: ce35162343db1e14e9621d5962f21411, type: 3}
@@ -2067,6 +2072,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5448009990223420151, guid: df52c9e75057e2d4e8b6294d06503858, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: df52c9e75057e2d4e8b6294d06503858, type: 3}
+--- !u!1 &256641337113274593 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1579774250763353400, guid: df52c9e75057e2d4e8b6294d06503858, type: 3}
+  m_PrefabInstance: {fileID: 1613337188766815705}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7361683530011257568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8091364938787176249, guid: df52c9e75057e2d4e8b6294d06503858, type: 3}
@@ -2133,5 +2143,10 @@ PrefabInstance:
 --- !u!4 &3195210374708043959 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8091364938787176249, guid: df52c9e75057e2d4e8b6294d06503858, type: 3}
+  m_PrefabInstance: {fileID: 6637715836514082702}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5328210452694885046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1579774250763353400, guid: df52c9e75057e2d4e8b6294d06503858, type: 3}
   m_PrefabInstance: {fileID: 6637715836514082702}
   m_PrefabAsset: {fileID: 0}
