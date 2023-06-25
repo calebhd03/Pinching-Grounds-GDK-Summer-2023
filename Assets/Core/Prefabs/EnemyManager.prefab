@@ -49,6 +49,7 @@ MonoBehaviour:
   player: {fileID: 0}
   handPrefab: {fileID: 5340831706898765559, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
   feetPrefab: {fileID: 5770471939269578016, guid: 485e09af952289f4dbf475d5fc11d00a, type: 3}
+  gameManager: {fileID: 0}
   rightHand: {fileID: 5340831706422988508}
   leftHand: {fileID: 5340831706274484393}
 --- !u!1001 &662324830
@@ -63,8 +64,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4295263806152716300, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.1949465
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295263806152716300, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.1949465
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295263806152716300, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.1949465
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295263806152716300, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.586969
+      value: 10.2
       objectReference: {fileID: 0}
     - target: {fileID: 4295263806152716300, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -72,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4295263806152716300, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.679573
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 4295263806152716300, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -106,6 +119,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Hand
       objectReference: {fileID: 0}
+    - target: {fileID: 8510430647251077073, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
+      propertyPath: isLeftHand
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
 --- !u!4 &4295263805529224786 stripped
@@ -131,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4295263806152716300, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.03438
+      value: 21.647411
       objectReference: {fileID: 0}
     - target: {fileID: 4295263806152716300, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -139,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4295263806152716300, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.082699
+      value: -2.703125
       objectReference: {fileID: 0}
     - target: {fileID: 4295263806152716300, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -172,10 +189,6 @@ PrefabInstance:
     - target: {fileID: 5340831706898765559, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
       propertyPath: m_Name
       value: Hand
-      objectReference: {fileID: 0}
-    - target: {fileID: 8510430647251077073, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
-      propertyPath: isLeftHand
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}

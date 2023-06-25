@@ -14,6 +14,7 @@ public class HandManager : MonoBehaviour
     [SerializeField] Animator handAnimator;
     [SerializeField] NavMeshAgent navMeshAgent;
     [SerializeField] HandAttack handAttack;
+    [SerializeField] HandAttackManager handAttackManager;
     [SerializeField] GameObject player;
 
     bool readyToAttack = false;
@@ -143,7 +144,9 @@ public class HandManager : MonoBehaviour
 
     public void StartPhase2()
     {
+        Debug.Log("PHASE 2!!!!!!!!!!!!!");
         phase = 2;
+        handAttackManager.Phase2();
         handAnimator.SetTrigger("StartPhase2");
     }    
 

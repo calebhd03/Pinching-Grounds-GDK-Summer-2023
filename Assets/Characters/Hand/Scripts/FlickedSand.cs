@@ -19,6 +19,11 @@ public class FlickedSand : MonoBehaviour
         Destroy(gameObject, 10f);
     }
 
+    public void SetSpeed(float s)
+    {
+        speed = s;
+    }
+
     public IEnumerator MoveForward()
     {
         if(phase ==2)

@@ -10,6 +10,8 @@ public class HandAttackManager : MonoBehaviour
     [SerializeField] float timeBetweenAttacks;
     [SerializeField] float flickedSandSpeed;
     [SerializeField] float dashSpeed;
+    [SerializeField] float flickedSandSpeed2;
+    [SerializeField] float dashSpeed2;
 
     [SerializeField] HandManager handManager;
     [SerializeField] MultipleVoiceline handAttackVoiceLines;
@@ -51,6 +53,12 @@ public class HandAttackManager : MonoBehaviour
 
     }
 
+    public void Phase2()
+    {
+        dashSpeed = dashSpeed2;
+        flickedSandSpeed = flickedSandSpeed2;
+    }
+
     public void Flick()
     {
         GameObject flickedSand = Instantiate(flickPrefab, flickPoint.position, Quaternion.identity);
@@ -58,6 +66,7 @@ public class HandAttackManager : MonoBehaviour
         flickedSand.transform.LookAt(target);
 
         FlickedSand sandScript = flickedSand.GetComponent<FlickedSand>();
+        sandScript.SetSpeed(flickedSandSpeed);
         sandScript.SetPhase(handManager.GetPhase());
         StartCoroutine(sandScript.MoveForward());
     }
