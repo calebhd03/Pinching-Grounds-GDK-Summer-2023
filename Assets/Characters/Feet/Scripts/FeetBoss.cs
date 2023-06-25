@@ -185,4 +185,11 @@ public class FeetBoss : MonoBehaviour
             enemyManager.LeftHandStartPhase2();
         }
     }
+    public void BossDied()
+    {
+        if(currentHealth <= 0)
+        {
+            enemyManager.BossDied();
+        }
+    }
 }
