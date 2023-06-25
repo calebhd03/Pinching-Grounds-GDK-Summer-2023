@@ -31,6 +31,7 @@ public class CrabCover : MonoBehaviour
 
     private void Block()
     {
+        playerMovement.rb.velocity = Vector3.zero;
         modelToHide.SetActive(false);
         playerMovement.SetCanMove(false);
 
