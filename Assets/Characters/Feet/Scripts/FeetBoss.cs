@@ -17,6 +17,9 @@ public class FeetBoss : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] NavMeshAgent navMeshAgent;
 
+    [SerializeField] MultipleVoiceline feetAttackVoiceLines;
+    [SerializeField] MultipleVoiceline toesDamageVoiceLines;
+
     //GameObject player;
     [Header("Movement")]
     public float range;
@@ -140,12 +143,14 @@ public class FeetBoss : MonoBehaviour
     {
         Debug.Log("Feet attack");
         Instantiate(Blast, firePointLeft.position, firePointLeft.rotation);
+        feetAttackVoiceLines.Play();
     }
 
     public void AttackRight()
     {
         Debug.Log("Feet attack");
         Instantiate(Blast, firePointRight.position, firePointRight.rotation);
+        feetAttackVoiceLines.Play();
     }
 
     public void Damage()
@@ -153,6 +158,8 @@ public class FeetBoss : MonoBehaviour
         currentHealth -= 1;
         //anim.SetInteger("Health", currentHealth);
         healthSlider.value = currentHealth;
+        toesDamageVoiceLines.Play();
+
         if (currentHealth == 0)
         {
             BossDied();
@@ -164,8 +171,9 @@ public class FeetBoss : MonoBehaviour
         LeftcurrentHealth -= 1;
         //anim.SetInteger("Health", currentHealth);
         LefthealthSlider.value = LeftcurrentHealth;
+        feetAttackVoiceLines.Play();
 
-        if(LeftcurrentHealth == 0)
+        if (LeftcurrentHealth == 0)
         {
             LefthealthSlider.gameObject.SetActive(false);
             LeftDeath.gameObject.SetActive(false);
@@ -180,6 +188,7 @@ public class FeetBoss : MonoBehaviour
         RightcurrentHealth -= 1;
         //anim.SetInteger("Health", currentHealth);
         RighthealthSlider.value = RightcurrentHealth;
+        feetAttackVoiceLines.Play();
 
         if (RightcurrentHealth == 0)
         {

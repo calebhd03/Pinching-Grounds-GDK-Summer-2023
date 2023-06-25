@@ -1566,6 +1566,8 @@ GameObject:
   - component: {fileID: 5770471939269578022}
   - component: {fileID: 5770471939269578040}
   - component: {fileID: -3150573744296047808}
+  - component: {fileID: 722848256588172627}
+  - component: {fileID: 2012226976486003840}
   m_Layer: 0
   m_Name: FeetBoss
   m_TagString: Enemy
@@ -1609,6 +1611,8 @@ MonoBehaviour:
   enemyManager: {fileID: 0}
   player: {fileID: 0}
   navMeshAgent: {fileID: 5770471939269578022}
+  feetAttackVoiceLines: {fileID: 0}
+  toesDamageVoiceLines: {fileID: 0}
   range: 30
   centrePoint: {fileID: 5770471939269578043}
   FinalHealth: 20
@@ -1685,6 +1689,70 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &722848256588172627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5770471939269578016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25903065a6b55c846a1b0d0d19c5ab62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceOfHappening: 0.128
+  sounds:
+  - name: 
+    clip: {fileID: 8300000, guid: 9ffd108e8a3bdc342b66dcbecf45e5c4, type: 3}
+    volume: 0.181
+    pitch: 1.38
+    spatialBlend: 0
+    loop: 0
+  - name: 
+    clip: {fileID: 8300000, guid: d022ce5be795f194b8096062619a290b, type: 3}
+    volume: 0.181
+    pitch: 1.38
+    spatialBlend: 0
+    loop: 0
+  - name: 
+    clip: {fileID: 8300000, guid: c9d7e418db03d664eb84e4035c105ea1, type: 3}
+    volume: 0.181
+    pitch: 1.38
+    spatialBlend: 0
+    loop: 0
+--- !u!114 &2012226976486003840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5770471939269578016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25903065a6b55c846a1b0d0d19c5ab62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceOfHappening: 0.128
+  sounds:
+  - name: 
+    clip: {fileID: 8300000, guid: 4d5675d78faff074395291d08da6cc42, type: 3}
+    volume: 0.181
+    pitch: 1.38
+    spatialBlend: 0
+    loop: 0
+  - name: 
+    clip: {fileID: 8300000, guid: 0b90fc436f039174793bc0f78ad1831d, type: 3}
+    volume: 0.181
+    pitch: 1.38
+    spatialBlend: 0
+    loop: 0
+  - name: 
+    clip: {fileID: 8300000, guid: abd3b03d2e2268c40aa9025b8e9fc2ad, type: 3}
+    volume: 0.181
+    pitch: 1.38
+    spatialBlend: 0
+    loop: 0
 --- !u!1 &5770471939544071822
 GameObject:
   m_ObjectHideFlags: 0
