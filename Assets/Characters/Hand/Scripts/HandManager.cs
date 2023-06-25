@@ -9,6 +9,8 @@ public class HandManager : MonoBehaviour
     [SerializeField] float parryTime;
     [SerializeField] float dashDistance;
     [SerializeField] int damage;
+    [SerializeField] bool isLeftHand;
+
     [SerializeField] Animator handAnimator;
     [SerializeField] NavMeshAgent navMeshAgent;
     [SerializeField] HandAttack handAttack;
@@ -70,6 +72,16 @@ public class HandManager : MonoBehaviour
     public Vector3 GetPlayerPosition()
     {
         return player.transform.position;
+    }
+    
+    public void SetWhichHand(bool ifLeft)
+    {
+        isLeftHand= ifLeft;
+    }
+
+    public bool IsLeftHand()
+    {
+        return isLeftHand;
     }
 
     public void StopMoving()
@@ -142,6 +154,7 @@ public class HandManager : MonoBehaviour
 
     public void BossDied()
     {
-
+        handAnimator.SetTrigger("BossDied");
+        StopMoving();
     }
 }

@@ -1238,6 +1238,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1826725185}
+    - target: {fileID: 8510430647251077073, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
+      propertyPath: isLeftHand
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e2229d6b7551c34fa9e1271b2f2a9bc, type: 3}
 --- !u!1001 &429340196829814499

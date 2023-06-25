@@ -11,9 +11,6 @@ public class HandAttack : MonoBehaviour
     [SerializeField] Animator handAnimator;
     [SerializeField] GameObject flickPrefab;
 
-    int numberOfAttacks = 3;
-    bool canAttack =false;
-
 
     private void OnTriggerEnter(Collider other)
     {

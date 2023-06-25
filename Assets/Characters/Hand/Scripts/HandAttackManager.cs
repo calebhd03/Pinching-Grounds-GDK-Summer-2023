@@ -18,8 +18,6 @@ public class HandAttackManager : MonoBehaviour
     [SerializeField] Transform flickPoint;
     [SerializeField] ParticleSystem handTrail;
 
-    int numberOfAttacks = 2;
-    bool canAttack = false;
     float navMeshSpeed;
 
 
@@ -35,18 +33,16 @@ public class HandAttackManager : MonoBehaviour
 
     public void ReadyToAttack()
     {
-        canAttack = true;
-
         handAttackVoiceLines.Play();
 
-        int attack = Random.Range(1, numberOfAttacks + 1);
-        switch (attack)
+
+        switch (handManager.IsLeftHand())
         {
-            case 1:
+            case true:
                 handAnimator.SetTrigger("Flick");
                 break;
 
-            case 2:
+            case false:
                 if(handManager.GetPhase() == 1)
                     handAnimator.SetTrigger("HandHandDrag");
                 else

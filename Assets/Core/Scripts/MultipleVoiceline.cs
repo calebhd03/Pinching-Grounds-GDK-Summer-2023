@@ -37,7 +37,7 @@ public class MultipleVoiceline : MonoBehaviour
 
         if(Random.Range(0f, 1f)< chanceOfHappening)
         {
-            int soundToPlay = Random.Range(0, sounds.Count+1);
+            int soundToPlay = Random.Range(0, sounds.Count);
             audioSource.clip = sounds[soundToPlay].clip;
             audioSource.Play();
         }

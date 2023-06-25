@@ -8,11 +8,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] AudioSource victoryVoiceLine;
     [SerializeField] AudioSource gameOverVoiceLine;
-    [SerializeField] GameObject UIToShow;
+    [SerializeField] GameObject gameOverUI;
+    [SerializeField] GameObject lossUI;
+    [SerializeField] GameObject victoryUI;
 
     //called by boss dieing 
     public void Victory()
     {
+        VictoryUI();
         victoryVoiceLine.Play();
         animator.SetTrigger("Victory");
     }
@@ -21,13 +24,23 @@ public class GameManager : MonoBehaviour
     public void PlayerDied()
     {
         //show death screen
+        LossUI();
         gameOverVoiceLine.Play();
         animator.SetTrigger("Lost");
     }
 
     public void ShowUI()
     {
-        UIToShow.SetActive(true);
+        gameOverUI.SetActive(true);
+    }
+
+    public void LossUI()
+    {
+        lossUI.SetActive(true);
+    }
+    public void VictoryUI()
+    {
+        victoryUI.SetActive(true);
     }
 
     public void RestartButton()

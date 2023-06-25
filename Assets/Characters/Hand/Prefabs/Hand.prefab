@@ -109,6 +109,7 @@ MonoBehaviour:
   parryTime: 0.3
   dashDistance: 30
   damage: 1
+  isLeftHand: 0
   handAnimator: {fileID: 360458178248806201}
   navMeshAgent: {fileID: 7315719942166021809}
   handAttack: {fileID: 4339264044646503296}
@@ -129,7 +130,7 @@ MonoBehaviour:
   flickedSandSpeed: 2
   dashSpeed: 10
   handManager: {fileID: 8510430647251077073}
-  multipleVoiceline: {fileID: 5024053215372546337}
+  handAttackVoiceLines: {fileID: 5024053215372546337}
   handAnimator: {fileID: 360458178248806201}
   flickPrefab: {fileID: 5807376921041951006, guid: cca51433e85401f468398ad2134d0a43, type: 3}
   flickPoint: {fileID: 15157182939068854}
