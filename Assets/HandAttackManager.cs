@@ -15,6 +15,7 @@ public class HandAttackManager : MonoBehaviour
     [SerializeField] Animator handAnimator;
     [SerializeField] GameObject flickPrefab;
     [SerializeField] Transform flickPoint;
+    [SerializeField] ParticleSystem handTrail;
 
     int numberOfAttacks = 2;
     bool canAttack = false;
@@ -72,6 +73,7 @@ public class HandAttackManager : MonoBehaviour
 
     public void HandDrag()
     {
+        handTrail.Play();
         LookAtPlayer();
         handManager.DashTowardsPlayer();
         GetComponent<NavMeshAgent>().speed = dashSpeed;
@@ -79,6 +81,7 @@ public class HandAttackManager : MonoBehaviour
 
     public void StopHandDrag()
     {
+        handTrail.Stop();
         handManager.StopDashTowardsPlayer();
         GetComponent<NavMeshAgent>().speed = navMeshSpeed;
     }
