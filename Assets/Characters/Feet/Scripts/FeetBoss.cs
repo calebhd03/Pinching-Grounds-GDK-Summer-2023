@@ -90,7 +90,7 @@ public class FeetBoss : MonoBehaviour
         
         
 
-        if(LeftcurrentHealth == 0 && RightcurrentHealth == 0)
+        if(LeftcurrentHealth <= 0 && RightcurrentHealth <= 0)
         {
             healthSlider.gameObject.SetActive(true);
             Left.tag = "Enemy";
@@ -103,6 +103,36 @@ public class FeetBoss : MonoBehaviour
         //Attacks
         int randomNumber = Random.Range(0, 5);
         Debug.Log(randomNumber);
+
+        //still in phase 1
+        if (LeftcurrentHealth > 0 || RightcurrentHealth > 0)
+        {
+            Debug.Log("Attack phase 1");
+            if (LeftcurrentHealth > 0 && RightcurrentHealth > 0)
+            {
+                Debug.Log("Random");
+                RandomChooseAttack(randomNumber);
+            }
+            else if (LeftcurrentHealth <= 0)
+            {
+                anim.SetTrigger("Walk/RightStomp");
+            }
+
+            else
+            {
+                anim.SetTrigger("Walk/LeftStomp");
+            }
+            //Instantiate(Blast, firePointRight.position, firePointRight.rotation);
+        }
+        //in phase 2
+        else
+        {
+            RandomChooseAttack(randomNumber);
+        }
+    }
+
+    private void RandomChooseAttack(int randomNumber)
+    {
         if (randomNumber > 2)
         {
             anim.SetTrigger("Walk/RightStomp");
@@ -114,6 +144,7 @@ public class FeetBoss : MonoBehaviour
             //Instantiate(Blast, firePointLeft.position, firePointLeft.rotation);
         }
     }
+
     public void StopMoving()
     {
         navMeshAgent.isStopped = true;
@@ -160,7 +191,7 @@ public class FeetBoss : MonoBehaviour
         healthSlider.value = currentHealth;
         toesDamageVoiceLines.Play();
 
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             BossDied();
         }
@@ -173,7 +204,7 @@ public class FeetBoss : MonoBehaviour
         LefthealthSlider.value = LeftcurrentHealth;
         feetAttackVoiceLines.Play();
 
-        if (LeftcurrentHealth == 0)
+        if (LeftcurrentHealth <= 0)
         {
             LefthealthSlider.gameObject.SetActive(false);
             LeftDeath.gameObject.SetActive(false);
@@ -190,7 +221,7 @@ public class FeetBoss : MonoBehaviour
         RighthealthSlider.value = RightcurrentHealth;
         feetAttackVoiceLines.Play();
 
-        if (RightcurrentHealth == 0)
+        if (RightcurrentHealth <= 0)
         {
             RighthealthSlider.gameObject.SetActive(false);
             RightDeath.gameObject.SetActive(false);
@@ -240,9 +271,6 @@ public class FeetBoss : MonoBehaviour
     }
     public void BossDied()
     {
-        if(currentHealth <= 0)
-        {
-            enemyManager.BossDied();
-        }
+        enemyManager.BossDied();
     }
 }

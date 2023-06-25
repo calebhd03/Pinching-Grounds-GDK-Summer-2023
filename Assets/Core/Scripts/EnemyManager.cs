@@ -8,6 +8,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject handPrefab;
     [SerializeField] GameObject feetPrefab;
+    [SerializeField] GameManager gameManager;
 
     [SerializeField] GameObject rightHand;
     [SerializeField] GameObject leftHand;
@@ -66,6 +67,7 @@ public class EnemyManager : MonoBehaviour
         {
             hand.GetComponent<HandManager>().BossDied();
         }
+        gameManager.Victory();
     }
 
 

@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Users;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -51,6 +47,13 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 lookInput = input.Get<Vector2>();
         look = new Vector3(0, lookInput.x, 0);
+    }
+
+    public void ChangeToUI()
+    {
+        PlayerInput input = GetComponent<PlayerInput>();
+        input.actions.FindActionMap("Player").Disable();
+        input.actions.FindActionMap("UI").Enable();
     }
 
     ///Points gun at mouse world position

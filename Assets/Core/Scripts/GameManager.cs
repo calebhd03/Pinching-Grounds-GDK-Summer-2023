@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject gameOverUI;
     [SerializeField] GameObject lossUI;
     [SerializeField] GameObject victoryUI;
+    [SerializeField] PlayerMovement playerMovement;
 
     //called by boss dieing 
     public void Victory()
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowUI()
     {
+        playerMovement.ChangeToUI();
         gameOverUI.SetActive(true);
     }
 
