@@ -16,17 +16,17 @@ public class GameManager : MonoBehaviour
     public void Victory()
     {
         VictoryUI();
+        ShowUI();
         victoryVoiceLine.Play();
-        animator.SetTrigger("Victory");
     }
 
     //called by player when died
     public void PlayerDied()
     {
         //show death screen
-        LossUI();
+        LossUI(); 
+        ShowUI();
         gameOverVoiceLine.Play();
-        animator.SetTrigger("Lost");
     }
 
     public void ShowUI()
