@@ -10,8 +10,7 @@ public class PlayerMovement : MonoBehaviour
     //[SerializeField] Rigidbody rigidbody;
     [SerializeField] PlayerSettings playerSettings;
     [SerializeField] float movementSpeed;
-
-    Rigidbody rb;
+    [SerializeField] Rigidbody rb;
     Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
     Vector3 moveVelocity;
     Vector3 movement;
@@ -34,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove)
         {
-            transform.position += movement * movementSpeed;
+            rb.velocity = movement * movementSpeed;
             //transform.Translate(movement * movementSpeed);
             transform.Rotate(look * playerSettings.GetLookSpeed());
         }

@@ -211,7 +211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSettings: {fileID: 11400000, guid: 2e27f49d728dce14480800a968edc55e, type: 2}
-  movementSpeed: 0.2
+  movementSpeed: 10
+  rb: {fileID: 0}
 --- !u!114 &3594408126956710457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,7 +294,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1 &3358572493649511730
 GameObject:
