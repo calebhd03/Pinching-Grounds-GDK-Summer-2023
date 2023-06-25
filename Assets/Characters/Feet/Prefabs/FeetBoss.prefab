@@ -1611,10 +1611,10 @@ MonoBehaviour:
   enemyManager: {fileID: 0}
   player: {fileID: 0}
   navMeshAgent: {fileID: 5770471939269578022}
-  feetAttackVoiceLines: {fileID: 0}
-  toesDamageVoiceLines: {fileID: 0}
-  range: 30
-  centrePoint: {fileID: 5770471939269578043}
+  feetAttackVoiceLines: {fileID: 722848256588172627}
+  toesDamageVoiceLines: {fileID: 2012226976486003840}
+  range: 20
+  centrePoint: {fileID: 0}
   FinalHealth: 20
   currentHealth: 0
   LeftHealth: 10
