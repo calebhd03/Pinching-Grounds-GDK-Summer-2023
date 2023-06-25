@@ -14,6 +14,7 @@ public class FeetBoss : MonoBehaviour
     [SerializeField] Slider LefthealthSlider;
     [SerializeField] Slider RighthealthSlider;
     [SerializeField] EnemyManager enemyManager;
+    [SerializeField] GameObject player;
 
     //GameObject player;
     [Header("Movement")]
@@ -40,7 +41,6 @@ public class FeetBoss : MonoBehaviour
     public Transform firePointLeft;
     public Transform firePointRight;
 
-    GameObject player;
     GameObject leftHand;
     GameObject rightHand;
     List<GameObject> hands = new List<GameObject>();
@@ -75,7 +75,8 @@ public class FeetBoss : MonoBehaviour
 
 
         //Freeze Rotations
-        transform.localEulerAngles = new Vector3(0, 0, transform.localEulerAngles.z);
+        transform.LookAt(player.transform.position);
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
 
         //Random Movement
         if (agent.remainingDistance <= agent.stoppingDistance)

@@ -66,6 +66,7 @@ public class HandAttackManager : MonoBehaviour
     public void LookAtPlayer()
     {
         this.transform.LookAt(handManager.GetPlayerPosition());
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
 
     public void HandDrag()

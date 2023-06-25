@@ -1607,6 +1607,7 @@ MonoBehaviour:
   LefthealthSlider: {fileID: 1713354757}
   RighthealthSlider: {fileID: 1279350366}
   enemyManager: {fileID: 0}
+  player: {fileID: 0}
   range: 30
   centrePoint: {fileID: 5770471939269578043}
   FinalHealth: 20
@@ -1660,7 +1661,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!95 &-3150573744296047808
 Animator:
