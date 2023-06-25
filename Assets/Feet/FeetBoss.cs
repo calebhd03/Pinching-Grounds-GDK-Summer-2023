@@ -11,6 +11,8 @@ public class FeetBoss : MonoBehaviour
     Rigidbody rb;
     private Animator anim;
     [SerializeField] Slider healthSlider;
+    [SerializeField] Slider LefthealthSlider;
+    [SerializeField] Slider RighthealthSlider;
 
     //GameObject player;
     [Header("Movement")]
@@ -18,11 +20,19 @@ public class FeetBoss : MonoBehaviour
     public Transform centrePoint;
 
     [Header("Health")]
-    public int maxHealth = 20;
+    public int FinalHealth = 20;
     public int currentHealth;
+    public int LeftHealth = 10;
+    public int LeftcurrentHealth;
+    public int RightHealth = 10;
+    public int RightcurrentHealth;
 
-    [Header("Attack")]
+    [Header("Feet and Attack")]
+    public GameObject Left;
+    public GameObject Right;
     public GameObject Blast;
+    public Transform firePointLeft;
+    public Transform firePointRight;
 
     GameObject player;
     GameObject leftHand;
@@ -36,10 +46,18 @@ public class FeetBoss : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
 
-        currentHealth = maxHealth;
-        healthSlider.maxValue = maxHealth;
+        currentHealth = FinalHealth;
+        healthSlider.maxValue = FinalHealth;
         healthSlider.value = currentHealth;
-        anim.SetInteger("Health", currentHealth);
+
+        LeftcurrentHealth = LeftHealth;
+        LefthealthSlider.maxValue = LeftHealth;
+        LefthealthSlider.value = LeftcurrentHealth;
+
+        RightcurrentHealth = RightHealth;
+        RighthealthSlider.maxValue = RightHealth;
+        RighthealthSlider.value = RightcurrentHealth;
+        //anim.SetInteger("Health", currentHealth);
 
         //player = GameObject.FindWithTag("Player");
     }
@@ -47,7 +65,8 @@ public class FeetBoss : MonoBehaviour
     void Update()
     {
 
-        
+        healthSlider.gameObject.SetActive(false);
+
         //Freeze Rotations
         transform.localEulerAngles = new Vector3(0, 0, transform.localEulerAngles.z);
 
@@ -59,6 +78,34 @@ public class FeetBoss : MonoBehaviour
             {
                 agent.SetDestination(point);
             }
+        }
+
+        //Attacks
+        int randomNumber = Random.Range(0, 2);
+        if (randomNumber == 1)
+        {
+            anim.SetTrigger("Walk/RightStomp");
+            //Instantiate(Blast, firePointRight.position, firePointRight.rotation);
+        }
+        else
+        {
+            anim.SetTrigger("Walk/LeftStomp");
+            //Instantiate(Blast, firePointLeft.position, firePointLeft.rotation);
+        }
+
+        if(LeftcurrentHealth == 0 && RightcurrentHealth == 0)
+        {
+            healthSlider.gameObject.SetActive(true);
+            Left.tag = "Enemy";
+            Right.tag = "Enemy";
+        }
+        if(LeftcurrentHealth == 0)
+        {
+            LefthealthSlider.gameObject.SetActive(false);
+        }
+        if (RightcurrentHealth == 0)
+        {
+            RighthealthSlider.gameObject.SetActive(false);
         }
     }
     
@@ -81,28 +128,24 @@ public class FeetBoss : MonoBehaviour
     public void Damage()
     {
         currentHealth -= 1;
-        anim.SetInteger("Health", currentHealth);
+        //anim.SetInteger("Health", currentHealth);
         healthSlider.value = currentHealth;
     }
 
-    //Attacks
-    public void Phase2()
+    public void DamageLeft()
     {
-        if (anim.GetInteger("Health") <= 10)
-        {
-            enemyManager.StartPhase2();
+        LeftcurrentHealth -= 1;
+        //anim.SetInteger("Health", currentHealth);
+        LefthealthSlider.value = LeftcurrentHealth;
+    }
 
-            int randomNumber = Random.Range(0, 2);
-            if (randomNumber == 1)
-            {
-                anim.SetTrigger("Walk/RightStomp");
-            }
-            else
-            {
-                anim.SetTrigger("Walk/LeftStomp");
-            }
-        }
-    }   
+    public void DamageRight()
+    {
+        RightcurrentHealth -= 1;
+        //anim.SetInteger("Health", currentHealth);
+        RighthealthSlider.value = RightcurrentHealth;
+    }
+
 
     public void SetPlayer(GameObject p)
     {
@@ -121,4 +164,13 @@ public class FeetBoss : MonoBehaviour
     {
         this.enemyManager= e;
     }
+
+    /*
+    public void Phase2()
+    {
+        if (anim.GetInteger("Health") <= 10)
+        {
+            enemyManager.StartPhase2();    
+        }
+    }*/
 }
