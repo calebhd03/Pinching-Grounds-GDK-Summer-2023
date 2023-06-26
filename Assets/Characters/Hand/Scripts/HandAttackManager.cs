@@ -12,6 +12,7 @@ public class HandAttackManager : MonoBehaviour
     [SerializeField] float flickedSandSpeed2;
     [SerializeField] float dashSpeed2;
 
+    [SerializeField] AudioSource launchSound;
     [SerializeField] HandManager handManager;
     [SerializeField] MultipleVoiceline handAttackVoiceLines;
     [SerializeField] Animator handAnimator;
@@ -39,6 +40,7 @@ public class HandAttackManager : MonoBehaviour
         switch (handManager.IsLeftHand())
         {
             case true:
+                launchSound.Play();
                 handAnimator.SetTrigger("Flick");
                 break;
 

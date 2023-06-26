@@ -16,6 +16,7 @@ public class FeetBoss : MonoBehaviour
     [SerializeField] EnemyManager enemyManager;
     [SerializeField] GameObject player;
     [SerializeField] NavMeshAgent navMeshAgent;
+    [SerializeField] AudioSource footSlam;
 
     [SerializeField] MultipleVoiceline feetAttackVoiceLines;
     [SerializeField] MultipleVoiceline toesDamageVoiceLines;
@@ -173,6 +174,7 @@ public class FeetBoss : MonoBehaviour
     public void AttackLeft()
     {
         Debug.Log("Feet attack");
+        footSlam.Play();
         Instantiate(Blast, firePointLeft.position, firePointLeft.rotation);
         feetAttackVoiceLines.Play();
     }
@@ -180,6 +182,7 @@ public class FeetBoss : MonoBehaviour
     public void AttackRight()
     {
         Debug.Log("Feet attack");
+        footSlam.Play();
         Instantiate(Blast, firePointRight.position, firePointRight.rotation);
         feetAttackVoiceLines.Play();
     }

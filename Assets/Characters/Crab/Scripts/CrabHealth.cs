@@ -9,6 +9,7 @@ public class CrabHealth : MonoBehaviour
     [SerializeField] CrabCover crabCover;
     [SerializeField] Slider healthSlider;
     [SerializeField] GameManager gameManager;
+    [SerializeField] AudioSource blockedDamageSound;
     [SerializeField] int maxHealth;
     [SerializeField] int currentHealth;
     [SerializeField] float invincibleTime;
@@ -24,7 +25,9 @@ public class CrabHealth : MonoBehaviour
     public bool TakeDamage(int damage)
     {
         Debug.Log("checking take damage: is Invincible = " + isInvincible);
-        if(!isInvincible && !crabCover.GetBlocking())
+        if(crabCover.GetBlocking())
+            blockedDamageSound.Play();
+        if (!isInvincible && !crabCover.GetBlocking())
         {
             Debug.Log("Tool Damage");
             currentHealth -= damage;

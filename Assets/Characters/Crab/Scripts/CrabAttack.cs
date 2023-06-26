@@ -5,6 +5,7 @@ using UnityEngine;
 public class CrabAttack : MonoBehaviour
 {
     [SerializeField] Animator clawAnimator;
+    [SerializeField] AudioSource attackSound;
     [SerializeField] float attackCoolDown;
 
     bool canAttack = true;
@@ -19,6 +20,7 @@ public class CrabAttack : MonoBehaviour
 
     void Attack()
     {
+        attackSound.Play();
         clawAnimator.SetTrigger("Attack");
         StartCoroutine(AttackCoolDown());
     }
