@@ -5891,6 +5891,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4295263805693716519, guid: 5b758582c9f538148bbb664f16537773, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -2.194947
+      objectReference: {fileID: 0}
+    - target: {fileID: 7545567668833866646, guid: 5b758582c9f538148bbb664f16537773, type: 3}
+      propertyPath: m_Size.x
+      value: -1.654214
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138639425995731936, guid: 5b758582c9f538148bbb664f16537773, type: 3}
+      propertyPath: m_Size.x
+      value: -1.654214
+      objectReference: {fileID: 0}
     - target: {fileID: 8510430647575896058, guid: 5b758582c9f538148bbb664f16537773, type: 3}
       propertyPath: player
       value: 
