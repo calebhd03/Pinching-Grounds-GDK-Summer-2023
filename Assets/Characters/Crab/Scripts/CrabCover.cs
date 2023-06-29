@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
 public class CrabCover : MonoBehaviour
 {
@@ -30,7 +31,8 @@ public class CrabCover : MonoBehaviour
         }
     }
 
-    private void Block()
+
+    public void Block()
     {
         blockSound.Play();
         playerMovement.rb.velocity = Vector3.zero;
@@ -42,7 +44,7 @@ public class CrabCover : MonoBehaviour
         Debug.Log("Blocking");
     }
 
-    private void UnBlock()
+    public void UnBlock()
     {
         modelToHide.SetActive(true);
         playerMovement.SetCanMove(true);

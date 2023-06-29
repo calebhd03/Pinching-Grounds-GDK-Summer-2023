@@ -31,9 +31,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove)
         {
-            rb.velocity = movement * movementSpeed;
-            LookAtMouse();
+            rb.velocity = MobileMove() * movementSpeed;
+            transform.LookAt(transform.position + movement);
+            //LookAtMouse();
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(transform.position + (movement *2), .3f);
     }
 
     private void OnMove(InputValue input)
@@ -41,6 +47,12 @@ public class PlayerMovement : MonoBehaviour
         Vector2 movementInput = input.Get<Vector2>();
         movement = new Vector3(movementInput.x, 0, movementInput.y);
         moveVelocity = movement * movementSpeed;
+    }
+
+    private Vector3 MobileMove()
+    {
+        movement = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
+        return movement; 
     }
     
 

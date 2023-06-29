@@ -10,7 +10,7 @@ public class CrabAttack : MonoBehaviour
 
     bool canAttack = true;
 
-    void OnAttack()
+    public void OnAttack()
     {
         if(canAttack)
         {
