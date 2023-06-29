@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
     //[SerializeField] Rigidbody rigidbody;
     [SerializeField] PlayerSettings playerSettings;
     [SerializeField] float movementSpeed;
+    [SerializeField] Joystick joystick;
+
     public Rigidbody rb;
     Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
     Vector3 moveVelocity;
@@ -30,8 +32,6 @@ public class PlayerMovement : MonoBehaviour
         if (canMove)
         {
             rb.velocity = movement * movementSpeed;
-            //transform.Translate(movement * movementSpeed);
-            //transform.Rotate(look * playerSettings.GetLookSpeed());
             LookAtMouse();
         }
     }
