@@ -1,16 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class HandManager : MonoBehaviour
 {
-    
+
+    [Header("Values")]
     [SerializeField] float parryTime;
     [SerializeField] float dashDistance;
     [SerializeField] int damage;
     [SerializeField] bool isLeftHand;
 
+    [Header("Movement")]
+    public float range;
+    public Transform centrePoint;
+
+    [Header("Refrences")]
     [SerializeField] Animator handAnimator;
     [SerializeField] NavMeshAgent navMeshAgent;
     [SerializeField] HandAttack handAttack;
@@ -29,38 +34,33 @@ public class HandManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(chasingPlayer)
-        {
-            navMeshAgent.isStopped = false;
-            navMeshAgent.SetDestination(player.transform.position);
-        }
     }
-
+    Vector3 target;
     public void DashTowardsPlayer()
     {
-        chasingPlayer= false;
+        //c·sin(B) / Sin(C)
+        float C = Vector3.Angle(transform.position, centrePoint.position);
+        C *= MathF.PI / 180;
+        float B = MathF.PI - C * 2;
+        float c = Vector3.Distance(transform.position, centrePoint.position);
+        float distanceToPoint = c * Mathf.Sin(B) / Mathf.Sin(C);
 
-        Ray targetLine = new Ray(transform.position,  player.transform.position - transform.position);
-        Vector3 target;
-
-        
-        Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.blue, 1f);
-
-        RaycastHit hit; LayerMask layerMask = 3;
-        if(Physics.Raycast(targetLine, out hit, layerMask))
-        {
-            target = hit.point;
-        }
-        else
-        {
-            target = targetLine.GetPoint(dashDistance);
-        }
+        target = transform.forward * distanceToPoint;
+        Debug.Log("transform.position = " + transform.position);
+        Debug.Log("centrePoint.position = " + centrePoint.position);
+        Debug.Log("C = " + C);
+        Debug.Log("B = " + B);
+        Debug.Log("c = " + c);
+        Debug.Log("Distance to point = " + distanceToPoint);
+        Debug.Log("Dash target = " + target);
+        chasingPlayer = false;
 
 
         navMeshAgent.SetDestination(target);
     }
     public void StopDashTowardsPlayer()
     {
+        
         chasingPlayer = true;
         navMeshAgent.SetDestination(player.transform.position);
     }
@@ -94,8 +94,42 @@ public class HandManager : MonoBehaviour
     {
         chasingPlayer = true;
         navMeshAgent.isStopped = false;
+        navMeshAgent.SetDestination(RandomPoint(centrePoint.position, range));
     }
 
+    Vector3 randomPoint;
+    //Random Movement
+    Vector3 RandomPoint(Vector3 center, float range)
+    {
+
+        //flick hand goes to random point
+        if (isLeftHand)
+        {
+            randomPoint = center + UnityEngine.Random.insideUnitSphere * range;
+        }
+        //dash hand goes to edge
+        else
+        {
+            randomPoint = center + UnityEngine.Random.onUnitSphere * range;
+        }
+        randomPoint.y = 0;
+        Debug.Log(name + "Random position = " + randomPoint);
+        return randomPoint;
+        NavMeshHit hit;
+
+        if (NavMesh.SamplePosition(randomPoint, out hit, range, NavMesh.AllAreas))
+        {
+            return hit.position;
+        }
+        Debug.Log(name + "Random position = " + hit.position);
+        return Vector3.zero;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(randomPoint, .6f);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(target, .6f);
+    }
     public void HandWaitingHeight()
     {
         handAnimator.SetTrigger("HandWaiting");

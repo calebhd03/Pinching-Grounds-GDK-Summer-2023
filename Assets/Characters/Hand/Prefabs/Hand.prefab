@@ -49,7 +49,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -111,6 +111,8 @@ MonoBehaviour:
   dashDistance: 60
   damage: 1
   isLeftHand: 0
+  range: 30
+  centrePoint: {fileID: 0}
   handAnimator: {fileID: 360458178248806201}
   navMeshAgent: {fileID: 7315719942166021809}
   handAttack: {fileID: 4339264044646503296}
@@ -130,9 +132,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 5
   flickedSandSpeed: 15
-  dashSpeed: 10
+  dashSpeed: 30
   flickedSandSpeed2: 20
-  dashSpeed2: 15
+  dashSpeed2: 40
   launchSound: {fileID: 1807096052}
   handManager: {fileID: 8510430647251077073}
   handAttackVoiceLines: {fileID: 5024053215372546337}

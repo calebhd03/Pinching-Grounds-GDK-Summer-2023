@@ -103,15 +103,12 @@ public class FeetBoss : MonoBehaviour
     {
         //Attacks
         int randomNumber = Random.Range(0, 5);
-        Debug.Log(randomNumber);
 
         //still in phase 1
         if (LeftcurrentHealth > 0 || RightcurrentHealth > 0)
         {
-            Debug.Log("Attack phase 1");
             if (LeftcurrentHealth > 0 && RightcurrentHealth > 0)
             {
-                Debug.Log("Random");
                 RandomChooseAttack(randomNumber);
             }
             else if (LeftcurrentHealth <= 0)
@@ -160,14 +157,16 @@ public class FeetBoss : MonoBehaviour
     {
 
         Vector3 randomPoint = center + Random.insideUnitSphere * range;
+        //randomPoint.y = 0;
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
         {
             result = hit.position;
+            //Debug.Log(name + "Random position = " + hit.position);
             return true;
         }
-
         result = Vector3.zero;
+        //Debug.Log(name + "Random position = " + hit.position);
         return false;
     }
 
