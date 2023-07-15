@@ -38,12 +38,33 @@ public class HandManager : MonoBehaviour
     Vector3 target;
     public void DashTowardsPlayer()
     {
+        chasingPlayer = false;
+
+        Ray targetLine = new Ray(transform.position, player.transform.position - transform.position);
+        Vector3 target;
+
+
+        Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.blue, 1f);
+
+        RaycastHit hit; LayerMask layerMask = 3;
+        if (Physics.Raycast(targetLine, out hit, layerMask))
+        {
+            target = hit.point;
+        }
+        else
+        {
+            target = targetLine.GetPoint(dashDistance);
+        }
+        navMeshAgent.SetDestination(target);
+        /*
         //c·sin(B) / Sin(C)
-        float C = Vector3.Angle(transform.position, centrePoint.position);
-        C *= MathF.PI / 180;
-        float B = MathF.PI - C * 2;
+        Quaternion C = Quaternion.LookRotation(centrePoint.position, transform.up);
+        //float C = Vector3.Angle(transform.position, centrePoint.position);
+        //C *= MathF.PI / 180;
+
+        float B = 1;//= MathF.PI - C * 2;
         float c = Vector3.Distance(transform.position, centrePoint.position);
-        float distanceToPoint = c * Mathf.Sin(B) / Mathf.Sin(C);
+        float distanceToPoint  = 1;// = c * Mathf.Sin(B) / Mathf.Sin(C);
 
         target = transform.forward * distanceToPoint;
         Debug.Log("transform.position = " + transform.position);
@@ -57,6 +78,7 @@ public class HandManager : MonoBehaviour
 
 
         navMeshAgent.SetDestination(target);
+        */
     }
     public void StopDashTowardsPlayer()
     {
