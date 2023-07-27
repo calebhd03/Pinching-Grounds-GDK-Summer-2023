@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class HandManager : MonoBehaviour
 {
@@ -23,8 +24,9 @@ public class HandManager : MonoBehaviour
     [SerializeField] GameObject player;
 
     bool readyToAttack = false;
-    bool chasingPlayer = true;
     int phase = 1;
+    Vector3 target;
+    Vector3 randomPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -32,58 +34,31 @@ public class HandManager : MonoBehaviour
         HandReadyToAttack();
     }
 
-    private void FixedUpdate()
-    {
-    }
-    Vector3 target;
     public void DashTowardsPlayer()
     {
-        chasingPlayer = false;
 
-        Ray targetLine = new Ray(transform.position, player.transform.position - transform.position);
-        Vector3 target;
-
-
-        Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.blue, 1f);
-
-        RaycastHit hit; LayerMask layerMask = 3;
-        if (Physics.Raycast(targetLine, out hit, layerMask))
+        //only the wall layer
+        int layer = 3;
+        int layerMask = 1 << layer;
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, player.transform.position - transform.position, out hit, Mathf.Infinity, layerMask))
         {
-            target = hit.point;
+            Debug.DrawRay(transform.position, player.transform.position - transform.position * hit.distance, Color.yellow);
+            Debug.Log("Did Hit");
         }
         else
         {
-            target = targetLine.GetPoint(dashDistance);
+            Debug.DrawRay(transform.position, player.transform.position - transform.position * 1000, Color.white);
+            Debug.Log("Did not Hit");
         }
+
+        target = hit.point;
         navMeshAgent.SetDestination(target);
-        /*
-        //c·sin(B) / Sin(C)
-        Quaternion C = Quaternion.LookRotation(centrePoint.position, transform.up);
-        //float C = Vector3.Angle(transform.position, centrePoint.position);
-        //C *= MathF.PI / 180;
-
-        float B = 1;//= MathF.PI - C * 2;
-        float c = Vector3.Distance(transform.position, centrePoint.position);
-        float distanceToPoint  = 1;// = c * Mathf.Sin(B) / Mathf.Sin(C);
-
-        target = transform.forward * distanceToPoint;
-        Debug.Log("transform.position = " + transform.position);
-        Debug.Log("centrePoint.position = " + centrePoint.position);
-        Debug.Log("C = " + C);
-        Debug.Log("B = " + B);
-        Debug.Log("c = " + c);
-        Debug.Log("Distance to point = " + distanceToPoint);
-        Debug.Log("Dash target = " + target);
-        chasingPlayer = false;
-
-
-        navMeshAgent.SetDestination(target);
-        */
+        Debug.Log(name + "Target position = " + target);
     }
+
     public void StopDashTowardsPlayer()
     {
-        
-        chasingPlayer = true;
         navMeshAgent.SetDestination(player.transform.position);
     }
 
@@ -109,17 +84,14 @@ public class HandManager : MonoBehaviour
 
     public void StopMoving()
     {
-        chasingPlayer = false;
         navMeshAgent.isStopped = true;
     }
     public void StartMoving()
     {
-        chasingPlayer = true;
         navMeshAgent.isStopped = false;
         navMeshAgent.SetDestination(RandomPoint(centrePoint.position, range));
     }
 
-    Vector3 randomPoint;
     //Random Movement
     Vector3 RandomPoint(Vector3 center, float range)
     {
@@ -137,14 +109,6 @@ public class HandManager : MonoBehaviour
         randomPoint.y = 0;
         Debug.Log(name + "Random position = " + randomPoint);
         return randomPoint;
-        NavMeshHit hit;
-
-        if (NavMesh.SamplePosition(randomPoint, out hit, range, NavMesh.AllAreas))
-        {
-            return hit.position;
-        }
-        Debug.Log(name + "Random position = " + hit.position);
-        return Vector3.zero;
     }
     private void OnDrawGizmos()
     {
